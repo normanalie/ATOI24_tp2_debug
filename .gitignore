@@ -1,0 +1,9 @@
+# Compiler
+*.o
+*.out 
+
+# Outputs
+*.ppm
+
+# MacOS
+._*
