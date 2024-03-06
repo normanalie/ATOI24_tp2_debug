@@ -50,3 +50,8 @@ Le laplacien est utilisé pour detecter des changements brusques, souvent des bo
 3. Pour déclencher l'erreur il faut entrer assez de caractère (9 ou +) pour écrire 98 aka `b`dans password_is_good
 4. Pour casser le MDP, il faut entrer le caractère `b`dans password_is_good
 
+## Exercice 6
+1. La fonction prend en argument un unsigned, or la décrémentation peut être négative, ce qui fait boucler la valeur unsigned long long a sa valeur max.
+2. La condition d'arret doit être `n <= 1`
+
+## Exercice 7
