@@ -36,8 +36,8 @@ int main() {
 
     // Appel de la fonction avec une taille incorrecte
     process_data(data, size);
-    process_data2(data, size);
-    process_data3(data, size);
+    //process_data2(data, size);
+    //process_data3(data, size);
 
 
     // Libération de la mémoire
