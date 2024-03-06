@@ -26,9 +26,8 @@ int main() {
 
     for (int i = 0; i < NUM_SEGMENTS; i ++) {
         free(segments[i]);
-        segments[i++] = NULL;
     }
-
+    
     return 0;
 }
 
