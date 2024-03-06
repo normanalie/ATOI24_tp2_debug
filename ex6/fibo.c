@@ -9,7 +9,7 @@ unsigned long long fibonacci(unsigned long long n) {
 }
 
 int main() {
-    unsigned long long n = 50; // Valeur de n choisie arbitrairement
+    unsigned long long n = 5; // Valeur de n choisie arbitrairement
 
     printf("Calcul du nombre de Fibonacci pour n = %llu\n", n);
     printf("Le résultat est : %llu\n", fibonacci(n));

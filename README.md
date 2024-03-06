@@ -31,3 +31,22 @@ Le laplacien est utilisé pour detecter des changements brusques, souvent des bo
 2. Le programme donne un résultat peut etre faux car il additionne aussi la valeur de sum.
 3. Avec gdb on place un breakpoint à la ligne 9 et on affiche la valeur de sum avec `v sum`
 
+## Exercice 5
+1. Le code est vulnérable car l'entrée de l'utilisateur n'est pas protégée, il a donc accès à toute la stack
+2. La stack au moment de l'appel a vulnerable_function
+
+|STACK|VALUE|
+|-|-|
+|password_is_good|0|
+|buffer[7]|?|
+|buffer[6]|?|
+|buffer[5]|?|
+|buffer[4]|?|
+|buffer[3]|?|
+|buffer[2]|?|
+|buffer[1]|?|
+|buffer[0]|?|
+
+3. Pour déclencher l'erreur il faut entrer assez de caractère (9 ou +) pour écrire 98 aka `b`dans password_is_good
+4. Pour casser le MDP, il faut entrer le caractère `b`dans password_is_good
+
