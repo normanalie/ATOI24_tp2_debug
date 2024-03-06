@@ -28,6 +28,6 @@ Le laplacien est utilisé pour detecter des changements brusques, souvent des bo
 
 ## Exercice 4
 1. Le programme fait la somme des elements dans le tableau
-2. Le programme donne un résultat faux
+2. Le programme donne un résultat peut etre faux car il additionne aussi la valeur de sum.
 3. Avec gdb on place un breakpoint à la ligne 9 et on affiche la valeur de sum avec `v sum`
 
