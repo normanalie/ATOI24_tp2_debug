@@ -55,3 +55,17 @@ Le laplacien est utilisé pour detecter des changements brusques, souvent des bo
 2. La condition d'arret doit être `n <= 1`
 
 ## Exercice 7
+1. Ce que fait le code:
+   1. Un thread est une entité programmée pour être executée par le CPU. Là où un processus est un regroupement de ressources, le ou les thread(s) font partie du processus mais les deux modèles sont et peuvent être traités de manière indépendante.
+   2. Les mutexs sont une façon de garantir un accès sécurisé à une région critique par un thread. C'est un modèle simplifié du sémaphore. Un mutex est une variable partagée de 1 bit qui peut être modifié par deux opérations atomiques: `lock`et `unlock` qui sont des wrapper de routines assembleurs utilisant `TSL` ou `XCHG`.
+   3. Ce code simule un problème de _dead-lock_: Deux threads tentent d'obtenir deux mutexs dans l'ordre inverse l'un de l'autre. De plus, les deux instructions `lock()`sont séparés par un `sleep()`. Chaque thread va donc _yield_ entre l'obtention des deux mutexs.
+   La probabilité est alors très grande que l'autre thread prenne le CPU et que l'on se retrouve dans une situation de _dead-lock_
+2. Ce code dépend de la bibliothèque `<pthread.h>` qui implémente de modèle POSIX Thread en C.
+3. Pourquoi le code ne se termine jamais:
+   1. On place des breakpoints sur le lock(mutex1) du threadA et sur le lock(mutex2) du threadB. 
+    On execute le programme jusqu'au deadlock avec `run`
+    Au deadlock on arrete avec `Ctrl+C`et on inspecte l'état des threads `thread select`puis `thread backtrace`
+    On voit que le thread A est bloqué en _mutexwait_ ligne 17 et que le thread B est bloqué en _mutexwait_ ligne 38
+    2. ![LLDB deadlock backtrace](deadlock.png)
+    3. La commande _GDB_ `thread apply all bt` execute la commande `bt aka. backtrace`sur tout les threads.
+ 4. Les threads doivent obtenir les lock dans le même ordre ou alors n'utiliser qu'un seul lock. Si un thread doit faire remonter une information à l'autre thread (synchronisation et/ou interlock), il vaut mieux utiliser une _condition variable_ associée à un mutex plutot que 2 mutexs.  
